@@ -1,0 +1,107 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #000;
+}
+
+h1{
+    color: white;
+}
+
+.montserrat-custom {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; /* Adjust weight as needed (100-900) */
+    font-style:bold;    
+}
+
+.bienvenido.header{
+    display: flex;
+    justify-content: right;
+    height: 30px;
+   
+}
+
+.header img{
+    width: 100px;
+    height: 20px;
+    margin-right: 20px;
+    margin-top: 5px;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+#img-not{
+    display: flex;
+    width: auto;
+    height: 250px;
+    border-radius: 0;
+}
+
+
+
+.bienvenido{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    margin-left: 10px;
+    font-size: 200;
+    padding: auto;
+}
+
+.bienvenido h1{
+    align-items: center;
+    padding-top: 5px;
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+    height: auto;
+    background-color: #ffffff;
+    margin: auto;
+    align-items: center;
+}
+
+.nav{
+    justify-content: space-between;
+    margin-left: 20px;
+    
+}
+
+.nav-link{
+    color: #000;
+
+}
+
+.label-not{
+    display: flex;
+    justify-content: center;
+}
+
+.card-img-top{
+    margin: 3px;
+}
+
+.card{
+    border-radius: 0;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+footer a {
+    color: #fff;
+    margin: 0 10px;
+}
+footer a:hover {
+    text-decoration: underline;
+}
+
+.imgRS{
+    width: 30px;
+    font-family: "Montserrat", sans-serif;
+}
