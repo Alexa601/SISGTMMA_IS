@@ -82,7 +82,7 @@ if (isset($_GET['error'])) {
             <span2>GT</span2>
             <span3>MMA</span3>
         </div>
-        <div class="username">Competidor, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
+        <div class="username">Entrenador, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
         <div>
             <a class="btn btn-secondary" href="../index.php">Cerrar sesión</a>
         </div>
