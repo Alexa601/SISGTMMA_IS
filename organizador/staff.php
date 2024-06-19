@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneos</title>
+    <title>Registro Staff</title>
     <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,44 +15,36 @@
 </head>
 
 <body>
-<nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="../organizador/homeOrganizador.php">
-            <img src="../resourses/img/logo_sisgtmma.png" alt="logo">
-            <strong>Torneos</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><strong>Entrenador</strong></h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="../organizador/homeOrganizador.php"><img src="../resourses/img/logo_sisgtmma.png" alt="logo">
+                <strong>Registro de Staff a torneos</strong></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><strong>Organizador</strong></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../entrenador/homeEntrenador.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../entrenador/vistatorneos.php">Volver</a>
+                        <a class="nav-link active" aria-current="page" href="../organizador/homeOrganizador.php">Inicio</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
                     </li>
-                </ul>
+                </div>
             </div>
         </div>
-    </div>
-</nav>
-
+    </nav>
 
     <div class="Espacio"></div>
 
     <div class="opciones">
         <div class="card">
-            <h5 class="card-header">Ver Torneos</h5>
+            <h5 class="card-header">Torneos Disponibles</h5>
             <div class="card-body">
                 <?php
                 session_start();
@@ -93,7 +85,7 @@
         <div class="card">
             <h5 class="card-header">Registrar Staff a Torneo</h5>
             <div class="card-body">
-                <form action="registorneo.php" method="POST">
+                <form action="regisStaff" method="POST">
                     <div class="form-group">
                         <label for="id_registro_torneo_fk">Torneo</label>
 
@@ -138,7 +130,7 @@
         </div>
 
         <div class="card">
-            <h5 class="card-header">Staff del Torneo Registrado</h5>
+            <h5 class="card-header">Staff Registrado</h5>
             <div class="card-body">
                 <?php
                 $sql_staff = "SELECT registro_torneo_cat.NOMBRE_TORNEO, staff_tab.NOMBRE AS NOMBRE_STAFF, staff_tab.APELLIDO_PATERNO AS APELLIDO_STAFF, organizadores_tab.NOMBRE AS NOMBRE_ORG, organizadores_tab.APELLIDO_PATERNO AS APELLIDO_ORG

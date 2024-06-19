@@ -49,7 +49,7 @@ if (isset($_GET['error'])) {
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="../organizador/homeOrganizador.php">Inicio</a>
+            <a class="nav-link active" aria-current="page" href="../entrenador/homeEntrenador.php">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
@@ -64,37 +64,29 @@ if (isset($_GET['error'])) {
 </div>
 <div class="opciones">   
 <div class="card" id="opc">
-  <h5 class="card-header">Crear Torneo</h5>
+  <h5 class="card-header">Registrar alumnos a torneo</h5>
   <div class="card-body">
-    <p class="card-text">Realiza la creacion de un nuevo torneo para que participen las academias 
-      <br> Llena las bases correspondientes referentes a: 
+    <p class="card-text">Realiza la inscripción de tus alumnos a los torneos disponibles
+      <br> Llena los correspondientes referentes a: 
           <ul>
-            <li>Nombre del torneo</li>
-            <li>Fecha de inicio</li>
-            <li>Fecha de fin</li>
-            <li>Lugar</li>
-            <li>Costo</li>
+            <li>Nombre del alumno</li>
+            <li>Nivel</li>
+            <li>Edad</li>
+            <li>Peso</li>
           </ul>
     </p>
-    <a href="../organizador/torneo.php" class="btn">Nuevo Torneo</a>
+    <a href="#" class="btn">Inscribir alumnos</a>
   </div>
 </div>
 
 <div class="card">
-  <h5 class="card-header">Registrar Staff a Torneo</h5>
+  <h5 class="card-header">Ver alumnos inscritos</h5>
   <div class="card-body">
-    <p class="card-text">Registrar al staff que ayudara para cubrir el torneo</p>
-    <a href="../organizador/staff.php" class="btn">Registrar Staff</a>
+    <p class="card-text">Obtener un reporte de los alumnos inscritos al correo correspondiente</p>
+    <a href="#" class="btn">Ver alumnos inscritos</a>
   </div>
 </div>
 
-<div class="card">
-  <h5 class="card-header">Ver Torneos</h5>
-  <div class="card-body">
-    <p class="card-text">Visualizar todos los torneos que estan activos actualmente</p>
-    <a href="../organizador/homeTorneo.php" class="btn">Ver Torneos</a>
-  </div>
-</div>
 </div>
 
 <footer>
