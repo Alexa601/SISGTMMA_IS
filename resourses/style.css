@@ -17,7 +17,7 @@ h1{
 .bienvenido.header{
     display: flex;
     justify-content: right;
-    height: 30px;
+    height: 40px;
    
 }
 
@@ -30,14 +30,33 @@ h1{
     padding-bottom: 5px;
 }
 
-#img-not{
+.header-torneo{
     display: flex;
-    width: auto;
-    height: 250px;
-    border-radius: 0;
+    justify-content: flex-end;
 }
 
+.navbar-brand img{
+    width: 100px;
+    height: 25px;
+    padding-bottom: 5px;
+    margin-right: 20px;
+    margin-top: 5px;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5); /* Desplazamiento X, desplazamiento Y, desenfoque, color */
+    background-color: none;
+}
 
+.navbar-brand{
+    font-family: "Montserrat", sans-serif;
+    background-color: none;
+    
+}
+#img-not{
+    display: flex;
+    height: 300px;
+    border-radius: 0;
+    margin: 5px;
+    object-fit: cover;
+}
 
 .bienvenido{
     display: flex;
@@ -61,6 +80,12 @@ h1{
     background-color: #ffffff;
     margin: auto;
     align-items: center;
+
+}
+
+.offcanvas-header{
+    display: flex;
+    justify-content: space-between;    
 }
 
 .nav{
@@ -77,12 +102,13 @@ h1{
 .label-not{
     display: flex;
     justify-content: center;
+    margin-top: 70px;
 }
 
-.card-img-top{
-    margin: 3px;
+.card-footer{
+    border: 0;
+    background-color: #fff;
 }
-
 .card{
     border-radius: 0;
 }
@@ -105,3 +131,15 @@ footer a:hover {
     width: 30px;
     font-family: "Montserrat", sans-serif;
 }
+
+
+  
+  .nav-underline .nav-link:hover {
+    color: rgb(7, 132, 28); /* Cambia el color del texto al pasar el ratón */
+  }
+
+  .opciones {
+    padding-top: 100px;
+  }
+
+ 
