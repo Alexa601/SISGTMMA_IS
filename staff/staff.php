@@ -21,10 +21,11 @@ if (isset($_GET['error'])) {
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENTRENADOR - Sistema de Gestión de Torneos de MMA</title>
+    <title>STAFF - Sistema de Gestión de Torneos de MMA</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -34,6 +35,7 @@ if (isset($_GET['error'])) {
             margin: 0;
             padding: 0;
         }
+
         .header {
             background-color: #343a40;
             color: #fff;
@@ -47,46 +49,58 @@ if (isset($_GET['error'])) {
             width: 100%;
             z-index: 1000;
         }
+
         .header .title {
             font-size: 2rem;
         }
+
         .header .title span1 {
             color: #0e8418;
         }
+
         .header .title span2 {
             color: #ffffff;
         }
+
         .header .title span3 {
             color: #FF0000;
         }
+
         .header .username {
             margin-left: 20px;
         }
+
         .header .logout {
             margin-right: 20px;
         }
+
         .container {
             max-width: 600px;
-            margin-top: 80px; /* Para evitar que el formulario quede detrás del encabezado */
+            margin-top: 80px;
+            /* Para evitar que el formulario quede detrás del encabezado */
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         .form-group label {
             font-weight: bold;
             color: #333;
         }
+
         .btn-primary {
             background-color: #0e8418;
             border-color: #0e8418;
         }
+
         .btn-primary:hover {
             background-color: #0e6e14;
             border-color: #0e6e14;
         }
     </style>
 </head>
+
 <body>
     <div class="header">
         <div class="title">
@@ -94,8 +108,7 @@ if (isset($_GET['error'])) {
             <span2>GT</span2>
             <span3>MMA</span3>
         </div>
-        <div class="username">Entrenador, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
-        
+        <div class="username">STAFF, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
         <div>
             <a class="btn btn-danger" href="../model/roles.php">Volver</a>
         </div>
@@ -104,10 +117,10 @@ if (isset($_GET['error'])) {
     <div class="container mx-auto">
         <div class="card">
             <div class="card-header bg-dark text-white">
-                <h5 class="card-title text-center">Registro del Entrenador</h5>
+                <h5 class="card-title text-center">Registro del Staff</h5>
             </div>
             <div class="card-body">
-                <form  action="regisentrena.php" method="POST">
+                <form action="regisstaff.php" method="POST">
                     <div class="form-group">
                         <label for="id_academia_fk">Nombre de la Academia</label>
                         <select class="form-control" id="id_academia_fk" name="id_academia_fk" required>
@@ -115,17 +128,6 @@ if (isset($_GET['error'])) {
                             $result = $conn->query("SELECT ID_ACADEMIA_PK, NOMBRE_ACADEMIA FROM academias_cat");
                             while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                                 echo "<option value='" . htmlspecialchars($row['ID_ACADEMIA_PK']) . "'>" . htmlspecialchars($row['NOMBRE_ACADEMIA']) . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="estado">Estado</label>
-                        <select class="form-control" id="estado" name="estado" required>
-                            <?php
-                            $result = $conn->query("SELECT ID_ESTADO_PK, NOMBRE_ESTADO FROM estados_cat");
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value='" . htmlspecialchars($row['ID_ESTADO_PK']) . "'>" . htmlspecialchars($row['NOMBRE_ESTADO']) . "</option>";
                             }
                             ?>
                         </select>
@@ -147,13 +149,6 @@ if (isset($_GET['error'])) {
                         <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
                     </div>
                     <div class="form-group">
-                        <label for="sexo">Sexo</label>
-                        <select class="form-control" id="sexo" name="sexo" required>
-                            <option value="M">M</option>
-                            <option value="F">F</option>
-                        </select>
-                    </div>           
-                    <div class="form-group">
                         <label for="telefono">Teléfono</label>
                         <input type="text" class="form-control" id="telefono" name="telefono" required>
                     </div>
@@ -161,7 +156,17 @@ if (isset($_GET['error'])) {
                         <label for="correo_electronico">Correo</label>                        
                         <input type="email" class="form-control" id="correo_electronico" name="correo_electronico" value="<?php echo htmlspecialchars($_SESSION['correo']); ?>" readonly>
                     </div>
-                    
+                    <div class="form-group">
+                        <label for="id_rol_staff_fk">Rol</label>
+                        <select class="form-control" id="id_rol_staff_fk" name="id_rol_staff_fk" required>
+                            <?php
+                            $result = $conn->query("SELECT ID_ROLES_STAFF_PK, NOMBRE_ROL_STAFF FROM roles_staff_cat");
+                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<option value='" . htmlspecialchars($row['ID_ROLES_STAFF_PK']) . "'>" . htmlspecialchars($row['NOMBRE_ROL_STAFF']) . "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
                     <button type="submit" class="btn btn-primary btn-block">Registrar</button>
                 </form>
             </div>
@@ -173,4 +178,5 @@ if (isset($_GET['error'])) {
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

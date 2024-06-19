@@ -34,8 +34,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'Estudiante':
                 header("Location: ../alumnos/alumno.php");
                 break;
+            case 'Staff':
+                header("Location: ../staff/staff.php");
+                break;
             default:
-                header("Location: ../php/roles.php");
+                header("Location: ../model/roles.php");
                 break;
         }
         exit();
@@ -148,6 +151,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="hidden" name="rol" value="Estudiante">
                 <img src="/resourses/img/compe.png" alt="Estudiante">
                 <button type="submit">Estudiante</button>
+            </form>
+            <form action="roles.php" method="POST" class="profile">
+                <input type="hidden" name="rol" value="Staff">
+                <img src="/resourses/img/staff.png" alt="Staff">
+                <button type="submit">Staff</button>
             </form>
         </div>
     </div>
