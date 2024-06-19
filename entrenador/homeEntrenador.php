@@ -30,58 +30,6 @@ if (isset($_GET['error'])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../resourses/style.css">
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  
-    <style>
-        body {
-            background-color: #f8f9fa;
-            font-family: Arial, sans-serif;
-        }
-        .header {
-            background-color: #343a40;
-            color: #fff;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-        .header .title {
-            font-size: 2rem;
-        }
-        .header .title span1 {
-            color: #0e8418;
-        }
-        .header .title span2 {
-            color: #ffffff;
-        }
-        .header .title span3 {
-            color: #FF0000;
-        }
-        .container {
-            margin-top: 80px; /* Para evitar que el contenido quede detrás del encabezado */
-        }
-        .news-container {
-            background-color: white;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-        .news-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-        .news-item {
-            margin-bottom: 15px;
-        }
-        .news-item:last-child {
-            margin-bottom: 0;
-        }
-    </style>
 </head>
 <body>
     <nav class="navbar bg-body-tertiary fixed-top">
@@ -118,7 +66,7 @@ if (isset($_GET['error'])) {
             </ul>
 
             <li class="nav-item">
-            <a class="nav-link" href="../organizador/vistaTorneos.php">Cerrar Sesion</a>
+            <a class="nav-link" href="">Cerrar Sesion</a>
           </li>
           </li>
         </ul>
