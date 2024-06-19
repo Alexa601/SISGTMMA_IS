@@ -37,14 +37,14 @@ if ($encontrado) {
     <nav class="navbar bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
-    <strong>Bienvenid@: <?php echo $nombreOrganizador; ?> </strong>
+    <strong>Hola, <?php echo htmlspecialchars($_SESSION['usuario']); ?> </strong>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong><?php echo $nombreOrganizador;?></strong> </h5>
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong> </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
