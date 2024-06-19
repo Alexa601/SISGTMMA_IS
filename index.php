@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Gestión de Torneos de MMA</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         body {
             background-color: black;
@@ -24,24 +25,30 @@
             text-align: center;
             width: 100%;
             max-width: 400px;
+            
         }
         .login-container h1 span1 {
             color: #0e8418; 
+            font-family: "Montserrat", sans-serif;
         }
         .login-container h1 span2 {
             color: #ffffff; 
+            font-family: "Montserrat", sans-serif;
         }
         .login-container h1 span3 {
             color: #FF0000; 
+            font-family: "Montserrat", sans-serif;
         }
         .login-container h2, .login-container label, .login-container a {
             color: white;
+
         }
+
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h1><span1>SIS</span1><span2>GT</span2><span3>MMA</span3></h1>
+        <h1><span1><strong>SIS</strong></span1><span2><strong>GT</strong></span2><span3><strong>MMA</strong></span3></h1>
         
         <?php
         include('model/conexion.php'); // Incluir el archivo de conexión a la base de datos

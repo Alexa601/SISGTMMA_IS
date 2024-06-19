@@ -15,7 +15,6 @@ if (isset($_GET['mensaje'])) {
 if (isset($_GET['error'])) {
     echo "<div class='alert alert-danger'>" . htmlspecialchars($_GET['error']) . "</div>";
 }
-}
 ?>
 
 <!DOCTYPE html>
