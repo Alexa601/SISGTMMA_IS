@@ -25,7 +25,7 @@ if (isset($_GET['error'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COMPETIDOR - Sistema de Gestión de Torneos de MMA</title>
+    <title>ALUMNO - Sistema de Gestión de Torneos de MMA</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -109,6 +109,9 @@ if (isset($_GET['error'])) {
             <span3>MMA</span3>
         </div>
         <div class="username">Alumn@, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
+        <div>
+            <a class="btn btn-danger" href="../model/roles.php">Volver</a>
+        </div>
     </div>
 
     <div class="container mx-auto">

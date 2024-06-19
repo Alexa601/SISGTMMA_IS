@@ -62,18 +62,56 @@
             $database = new Database();
             $conn = $database->getConnection();
 
+            // Verificar en la tabla usuarios
             $sql = "SELECT * FROM usuarios WHERE contrasena=:contrasena AND correo=:correo AND usuario=:usuario";
             $stmt = $conn->prepare($sql);
             $stmt->execute(['contrasena' => $contrasena, 'correo' => $correo, 'usuario' => $usuario]);
             
             if ($stmt->rowCount() > 0) {
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
                 session_start();
-                $_SESSION['usuario'] = $usuario;
-                $_SESSION['correo'] = $correo;
-                header("Location: ../php/bienvenida.php");
+                $_SESSION['usuario'] = $row['usuario'];
+                $_SESSION['correo_eletronico'] = $row['correo'];
+                $_SESSION['rol'] = $row['rol'];
+                
+                // Redirección según el rol del usuario
+                switch ($row['rol']) {
+                    case 'Entrenador':
+                        header("Location: ../entrenador/homeEntrenador.php");
+                        break;
+                    case 'Estudiante':
+                        header("Location: ../alumnos/homeAlumno.php");
+                        break;
+                    case 'Staff':
+                        header("Location: ../staff/homeStaff.php");
+                        break;
+                    default:
+                        // Rol nulo (Administrador)
+                        // Validar en la tabla organizadores_tab
+                        $sql_org = "SELECT * FROM organizadores_tab WHERE contrasena=:contrasena AND correo_electronico=:correo AND usuario=:usuario";
+                        $stmt_org = $conn->prepare($sql_org);
+                        $stmt_org->execute(['contrasena' => $contrasena, 'correo' => $correo, 'usuario' => $usuario]);
+
+                        if ($stmt_org->rowCount() > 0) {
+                            header("Location:../organizador/homeOrganizador.php");
+                        } else {
+                            $mensaje = "<div class='alert alert-danger'>Correo, contraseña o nombre de usuario incorrectos en la tabla de organizadores</div>";
+                        }
+                        break;
+                }
                 exit();
             } else {
-                $mensaje = "<div class='alert alert-danger'>Correo, contraseña o nombre de usuario incorrectos</div>";
+                // Verificar en la tabla organizadores_tab si no se encuentra en usuarios
+                $sql_org = "SELECT * FROM organizadores_tab WHERE contrasena=:contrasena AND correo_electronico=:correo AND usuario=:usuario";
+                $stmt_org = $conn->prepare($sql_org);
+                $stmt_org->execute(['contrasena' => $contrasena, 'correo' => $correo, 'usuario' => $usuario]);
+
+                if ($stmt_org->rowCount() > 0) {
+                    header("Location: ../organizador/homeOrganizador.php");
+                    exit();
+                } else {
+                    $mensaje = "<div class='alert alert-danger'>Correo, contraseña o nombre de usuario incorrectos</div>";
+                }
             }
         }
         ?>
