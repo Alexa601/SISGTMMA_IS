@@ -141,8 +141,8 @@ if (isset($_GET['error'])) {
                     <div class="form-group">
                         <label for="sexo">Sexo</label>
                         <select class="form-control" id="sexo" name="sexo" required>
-                            <option value="M">M</option>
-                            <option value="F">F</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
                         </select>
                     </div>
                     <div class="form-group">

@@ -52,17 +52,17 @@ if (isset($_GET['error'])) {
         <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong> </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../organizador/vistaTorneos.php">Torneos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="../organizador/vistaTorneos.php">Mi Academia</a>
-                        </li>
+                 <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="perfil.php"> Perfil</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="../organizador/vistaTorneos.php">Torneos</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="miAcademia.php">Mi Academia</a>
+                    </li>
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Otros
                         </a>
