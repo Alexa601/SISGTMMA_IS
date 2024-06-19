@@ -58,7 +58,7 @@ if (isset($_GET['error'])) {
                       <a class="nav-link active" aria-current="page" href="perfil.php"> Perfil</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="../organizador/vistaTorneos.php">Torneos</a>
+                      <a class="nav-link" href="../entrenador/torneos.php">Torneos</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="miAcademia.php">Mi Academia</a>
