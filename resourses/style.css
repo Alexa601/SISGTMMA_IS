@@ -135,11 +135,25 @@ footer a:hover {
 
   
   .nav-underline .nav-link:hover {
-    color: rgb(7, 132, 28); /* Cambia el color del texto al pasar el ratón */
+    color: #07841c; /* Cambia el color del texto al pasar el ratón */
   }
 
   .opciones {
     padding-top: 100px;
   }
+
+  .btn{
+    background-color: #07841c;
+    border-color: #07841c;
+    font-family: "Montserrat", sans-serif;
+    color: #fff;
+  }
+
+  .opciones {
+    border-radius: 15px;
+    margin: 5px;
+  }
+
+
 
  
