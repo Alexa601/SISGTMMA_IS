@@ -58,7 +58,8 @@
 
     <div class="card-group">
         <div class="card">
-          <img src="../resourses/img/Noticia_ej.jpeg" class="card-img-top" alt="campOaxaca" id="img-not">
+          <a href="https://www.facebook.com/story.php?story_fbid=122131600232217815&id=61556534457512&mibextid=oFDknk&rdid=FJDWe2ws2oHiiYpi" id="img-not" target="_blank">
+            <img src="../resourses/img/Noticia_ej.jpeg" class="card-img-top" alt="campOaxaca"></a>
           <div class="card-body">
             <h5 class="card-title">1er. Campeonato Estatal de Oaxaca 2024</h5>
             <p class="card-text">Sede: Complejo Deportivo: "Hermanos Flores Magón".</p>
@@ -78,12 +79,12 @@
           </div>
         </div>
         <div class="card">
-          <img src="../resourses/img/noticia_ej2.jpeg" class="card-img-top" alt="..." id="img-not">
+          <a href="https://famm.com.mx/convocatoria/" target="_blank" id="img-not"><img src="https://i0.wp.com/famm.com.mx/wp-content/uploads/2022/04/campeonato-nacional-artes-marciales-mixtas.jpeg?resize=1187%2C1536&ssl=1" class="card-img-top" alt="..." ></a>
           <div class="card-body">
-            <h5 class="card-title">1er. Campeonato Estatal de Hidalgo 2024</h5>
-            <p class="card-text">Auditorio Municipal de Doxey, Tlaxcoapan Hidalgo.</p>
-            
-            <small class="text-body-secondary">Publicado: 24 de abril de 2024</small>
+            <h5 class="card-title">Campeonato Nacional de MMA 2024</h5>
+            <p class="card-text">Fecha: Del 24 al 26 de junio. 
+              <br> Sede: Gimnasio Nuevo León Unido
+            </p>
           </div>
           <div class="card-footer">
             

@@ -95,10 +95,12 @@ if ($encontrado) {
           </div>
         </div>
         <div class="card">
-          <img src="../resourses/img/noticia_ej2.jpeg" class="card-img-top" alt="..." id="img-not">
+          <a href="https://famm.com.mx/convocatoria/" target="_blank" id="img-not"><img src="https://i0.wp.com/famm.com.mx/wp-content/uploads/2022/04/campeonato-nacional-artes-marciales-mixtas.jpeg?resize=1187%2C1536&ssl=1" class="card-img-top" alt="..." ></a>
           <div class="card-body">
-            <h5 class="card-title">1er. Campeonato Estatal de Hidalgo 2024</h5>
-            <p class="card-text">Auditorio Municipal de Doxey, Tlaxcoapan Hidalgo.</p>
+            <h5 class="card-title">Campeonato Nacional de MMA 2024</h5>
+            <p class="card-text">Fecha: Del 24 al 26 de junio. 
+              <br> Sede: Gimnasio Nuevo León Unido
+            </p>
           </div>
           <div class="card-footer">
             <small class="text-body-secondary">Publicado: 24 de abril de 2024</small>
@@ -122,7 +124,7 @@ if ($encontrado) {
                 </div>
                 <div class="col-md-4">
                     <h5>Síguenos</h5>
-                    <a href="#"><img class="imgRS" src="../resourses/img/facebook.png" alt="Facebook"></a>
+                    <a href=""><img class="imgRS" src="../resourses/img/facebook.png" alt="Facebook"></a>
                     <a href="#"><img class="imgRS" src="../resourses/img/x.png" alt="Twitter"></a>
                     <a href="#"><img class="imgRS" src="../resourses/img/instagram.png" alt="Instagram"></a>
                 </div>
