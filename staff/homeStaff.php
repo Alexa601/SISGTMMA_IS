@@ -1,9 +1,27 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header("Location: ../index.php");
+    exit();
+}
+include('../model/conexion.php');
+$db = new Database();
+$conn = $db->getConnection(); // Obtener la conexión PDO
+
+// Mostrar mensajes de éxito o error
+if (isset($_GET['mensaje'])) {
+    echo "<div class='alert alert-success'>" . htmlspecialchars($_GET['mensaje']) . "</div>";
+}
+if (isset($_GET['error'])) {
+    echo "<div class='alert alert-danger'>" . htmlspecialchars($_GET['error']) . "</div>";
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff</title>
+    <title>Staff - Sistema de Gestión de Torneos de MMA</title>
     <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,14 +35,14 @@
     <nav class="navbar bg-body-tertiary fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#"><img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
-    <strong>Bienvenid@:  </strong>
+    <strong>Bienvenid@: <?php echo htmlspecialchars($_SESSION['usuario']); ?> </strong>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong></strong> </h5>
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong> </h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -48,7 +66,7 @@
             </ul>
 
             <li class="nav-item">
-            <a class="nav-link" href="../organizador/vistaTorneos.php">Cerrar Sesion</a>
+            <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
           </li>
           </li>
         </ul>

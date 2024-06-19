@@ -51,10 +51,10 @@ if (isset($_GET['error'])) {
             <a class="nav-link active" aria-current="page" href="#"> Perfil</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../organizador/vistaTorneos.php">Torneos</a>
+            <a class="nav-link" href="#">Torneos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../organizador/vistaTorneos.php">Rankeo Nacional</a>
+            <a class="nav-link" href="#">Rankeo Nacional</a>
           </li>
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Otros
@@ -66,7 +66,7 @@ if (isset($_GET['error'])) {
             </ul>
 
             <li class="nav-item">
-            <a class="nav-link" href="../organizador/vistaTorneos.php">Cerrar Sesion</a>
+            <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
           </li>
           </li>
         </ul>

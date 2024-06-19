@@ -26,6 +26,7 @@ if (isset($_GET['error'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STAFF - Sistema de Gestión de Torneos de MMA</title>
+    <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {

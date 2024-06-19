@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro - Sistema de Gestión de Torneos de MMA</title>
+    <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
     <style>
         body {
             background-color: black;
@@ -18,30 +23,30 @@
             color: white;
         }
         .login-container {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 30px;
             border-radius: 10px;
             text-align: center;
             width: 100%;
             max-width: 400px;
         }
-        .login-container h1 span1 {
-            color: #0e8418; 
+        .login-container-logo{
+            display: flex;
+            justify-content: center;
         }
-        .login-container h1 span2 {
-            color: #ffffff; 
+
+        .login-container-logo img{
+            width: 250px;
+            height: 70px;
         }
-        .login-container h1 span3 {
-            color: #FF0000; 
-        }
-        .login-container h2, .login-container label, .login-container a {
-            color: white;
-        }
+        
     </style>
 </head>
 <body>
     <div class="login-container">
-        <h1><span1>SIS</span1><span2>GT</span2><span3>MMA</span3></h1>
+    <div class="login-container-logo">
+           <img src="../resourses/img/logo_sisgtmma.png" alt="logo" > 
+        </div>
         <h2>REGISTRO</h2>
 
         <?php
