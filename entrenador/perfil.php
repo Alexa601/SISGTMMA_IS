@@ -106,9 +106,7 @@ $academia = $academiaOrm->getAll();
 <body>
     <header class="header">
         <div class="title">
-            <span1>SIS</span1>
-            <span2>GT</span2>
-            <span3>MMA</span3>
+        <img src="../resourses/img/logo_sisgtmma.png" alt="logo">
         </div>
         <div class="username">Entrenador, <?php echo htmlspecialchars($_SESSION['usuario']); ?></div>
         <div>
