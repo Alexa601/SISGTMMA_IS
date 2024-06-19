@@ -1,18 +1,7 @@
 <?php
 require_once('../model/conexion.php');
 require_once('../model/ORM.php');
-require_once('../model/atletas_tab.php');
-// Verifica si el usuario tiene rol de ADMIN
 
-$db = new Database();
-$encontrado = $db->verificarDriver();
-
-if ($encontrado) {
-  $cnn = $db->getConnection();
-    $atletaModelo = new Atletas_tab($cnn);
-    $nombreAtleta = $atletaModelo->getNombreAtleta(); 
-  
-} 
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +9,8 @@ if ($encontrado) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Competidor</title>
-    <link rel="icon" type="image/png" href="../resourses/img/logo.png">
+    <title>Entrenador</title>
+    <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -30,43 +19,49 @@ if ($encontrado) {
     <link rel="stylesheet" href="../resourses/style.css">
 </head>
 <body>
-
-    
-
-    <div class="bienvenido">
-        
-        <h1 class="montserrat-custom"><strong>Bienvenid@:  <?php echo $nombreAtleta; ?></strong></h1>
-        <div class="header">
-        <a class="header-competidor">
-            <img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
-        </a>
-    </div>
-    </div>
-
-    <div class="navbar">
-       <ul class="nav nav-underline">
-        <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#">Perfil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Rankeo Nacional</a>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Torneos</a>
+    <nav class="navbar bg-body-tertiary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
+    <strong>Bienvenid@:  </strong>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><strong></strong> </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"> Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../organizador/vistaTorneos.php">Torneos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../organizador/vistaTorneos.php">Mi Academia</a>
+          </li>
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Otros
+            </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Mis Torneos</a></li>
-              <li><a class="dropdown-item" href="#">Ver Torneos</a></li>
+              <li><a class="dropdown-item" href="#">Preguntas Frecuentes</a></li>
+              <li><a class="dropdown-item" href="#">Acerca de</a></li>
+              <li>
             </ul>
-        <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Otros</a>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Preguntas Frecuentes</a></li>
-      <li><a class="dropdown-item" href="#">Contactanos</a></li>
-      <li><a class="dropdown-item" href="#"></a></li>
-    </ul>
-  </li>
-      </ul> 
+
+            <li class="nav-item">
+            <a class="nav-link" href="../organizador/vistaTorneos.php">Cerrar Sesion</a>
+          </li>
+          </li>
+        </ul>
+        
+      </div>
     </div>
+  </div>
+</nav>
     
 
     <div class="label-not">
@@ -75,7 +70,8 @@ if ($encontrado) {
 
     <div class="card-group">
         <div class="card">
-          <img src="../resourses/img/Noticia_ej.jpeg" class="card-img-top" alt="campOaxaca" id="img-not">
+          <a href="https://www.facebook.com/story.php?story_fbid=122131600232217815&id=61556534457512&mibextid=oFDknk&rdid=FJDWe2ws2oHiiYpi" id="img-not" target="_blank">
+            <img src="../resourses/img/Noticia_ej.jpeg" class="card-img-top" alt="campOaxaca"></a>
           <div class="card-body">
             <h5 class="card-title">1er. Campeonato Estatal de Oaxaca 2024</h5>
             <p class="card-text">Sede: Complejo Deportivo: "Hermanos Flores Magón".</p>
@@ -85,7 +81,7 @@ if ($encontrado) {
           </div>
         </div>
         <div class="card">
-          <img src="../resourses/img/image.png" class="card-img-top" alt="..." id="img-not">
+        <a href="https://immaf.org/2024/05/17/pan-america-becomes-first-continental-federation-under-the-immaf-to-host-elections-for-presidency-and-key-positions/" target="_blank"  id="img-not"><img src="../resourses/img/image.png" class="card-img-top" alt="..."></a>
           <div class="card-body">
             <h5 class="card-title">Nuevo presidente de MMA </h5>
             <p class="card-text">Panamérica se convierte en la primera federación continental bajo la IMMAF en celebrar elecciones para la presidencia y puestos clave.</p>
@@ -103,7 +99,7 @@ if ($encontrado) {
             </p>
           </div>
           <div class="card-footer">
-            <small class="text-body-secondary">Publicado: 24 de abril de 2024</small>
+          <small class="text-body-secondary">Publicado: 17 de mayo de 2024</small>
           </div>
         </div>
         
