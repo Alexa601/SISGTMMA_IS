@@ -33,6 +33,9 @@
                         <a class="nav-link active" aria-current="page" href="../organizador/homeOrganizador.php">Inicio</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../organizador/vistaTorneos.php">Volver</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
                     </li>
                 </div>
@@ -85,7 +88,7 @@
         <div class="card">
             <h5 class="card-header">Registrar Staff a Torneo</h5>
             <div class="card-body">
-                <form action="regisStaff" method="POST">
+                <form action="regisStaff.php" method="POST">
                     <div class="form-group">
                         <label for="id_registro_torneo_fk">Torneo</label>
 

@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->execute();
     }
 
-    header("Location: torneos.php");
+    header("Location: staff.php");
     exit();
 }
 ?>
