@@ -1,193 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+// Conexión a la base de datos
+try {
+    $conn = new PDO("mysql:host=localhost;dbname=tu_base_de_datos", "tu_usuario", "tu_contraseña");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch(PDOException $e) {
+    echo "Error de conexión: " . $e->getMessage();
+}
 
+// Obtener torneos
+try {
+    $sql_torneos = "SELECT ID_TORNEO_PK, NOMBRE_TORNEO FROM registro_torneo_cat";
+    $result_torneos = $conn->query($sql_torneos);
+} catch (PDOException $e) {
+    echo "Error al obtener torneos: " . $e->getMessage();
+}
+
+// Obtener competidores
+try {
+    $sql_competidores = "SELECT ID_COMPETIDOR_PK, NOMBRE_COMPETIDOR, APELLIDO_COMPETIDOR FROM competidores_tab";
+    $result_competidores = $conn->query($sql_competidores);
+} catch (PDOException $e) {
+    echo "Error al obtener competidores: " . $e->getMessage();
+}
+
+// Obtener niveles
+try {
+    $sql_niveles = "SELECT ID_CATEGORIA_NIVEL_PK, NOMBRE_NIVEL FROM nivel_competidores_cat";
+    $result_niveles = $conn->query($sql_niveles);
+} catch (PDOException $e) {
+    echo "Error al obtener niveles: " . $e->getMessage();
+}
+
+// Obtener pesos
+try {
+    $sql_pesos = "SELECT ID_CATEGORIA_PESO_PK, NOMBRE_CATEGORIA_PESO FROM peso_competidores_cat";
+    $result_pesos = $conn->query($sql_pesos);
+} catch (PDOException $e) {
+    echo "Error al obtener pesos: " . $e->getMessage();
+}
+
+// Obtener categorías de edad
+try {
+    $sql_edades = "SELECT ID_CATEGORIA_EDAD_PK, NOMBRE_CATEGORIA_EDAD FROM edad_competidores_cat";
+    $result_edades = $conn->query($sql_edades);
+} catch (PDOException $e) {
+    echo "Error al obtener categorías de edad: " . $e->getMessage();
+}
+?>
+
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Torneos</title>
-    <link rel="icon" type="image/png" href="../resourses/img/logo2.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../resourses/style.css">
+    <title>Registro de Competidores</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-
 <body>
-<nav class="navbar navbar-dark bg-dark fixed-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="../organizador/homeOrganizador.php">
-            <img src="../resourses/img/logo_sisgtmma.png" alt="logo">
-            <strong>Torneos</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
-            <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><strong>Entrenador</strong></h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body">
-                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../entrenador/homeEntrenador.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../entrenador/vistatorneos.php">Volver</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</nav>
-
-
-    <div class="Espacio"></div>
-
-    <div class="opciones">
-        <div class="card">
-            <h5 class="card-header">Ver Torneos</h5>
-            <div class="card-body">
+<div class="container mt-5">
+    <h2>Registrar Competidor a Torneo</h2>
+    <form action="registorneo.php" method="POST">
+        <div class="form-group">
+            <label for="torneo">Torneo:</label>
+            <select name="torneo" id="torneo" class="form-control">
                 <?php
-                session_start();
-                require '../model/conexion.php';
-                $db = new Database();
-                $conn = $db->getConnection();
-
-                $sql = "SELECT NOMBRE_TORNEO, FECHA_TORNEO, HORA_INICIO_TORNEO, LUGAR, NIVEL_TORNEO, RANKEO, COSTO_FICHA, MODALIDAD, FECHA_LIMITE_INSCRIPCIONES, PREMIACION, ID_ORGANIZADOR_FK FROM registro_torneo_cat";
-                $result = $conn->query($sql);
-
-                if ($result->rowCount() > 0) {
-                    echo '<table class="table table-striped">';
-                    echo '<thead><tr><th>Nombre del Torneo</th><th>Fecha</th><th>Hora de Inicio</th><th>Lugar</th><th>Nivel</th><th>Rankeo</th><th>Costo</th><th>Modalidad</th><th>Fecha Límite de Inscripción</th><th>Premiación</th></tr></thead>';
-                    echo '<tbody>';
-                    while ($row = $result->fetch()) {
-                        echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row["NOMBRE_TORNEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["FECHA_TORNEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["HORA_INICIO_TORNEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["LUGAR"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["NIVEL_TORNEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["RANKEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["COSTO_FICHA"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["MODALIDAD"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["FECHA_LIMITE_INSCRIPCIONES"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["PREMIACION"]) . '</td>';
-                        echo '</tr>';
+                if ($result_torneos->rowCount() > 0) {
+                    while ($row = $result_torneos->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='" . htmlspecialchars($row['ID_TORNEO_PK']) . "'>" . htmlspecialchars($row['NOMBRE_TORNEO']) . "</option>";
                     }
-                    echo '</tbody>';
-                    echo '</table>';
                 } else {
-                    echo "No hay torneos disponibles.";
+                    echo "<option value=''>No hay torneos disponibles</option>";
                 }
                 ?>
-            </div>
+            </select>
         </div>
-
-        <div class="card">
-            <h5 class="card-header">Registrar Staff a Torneo</h5>
-            <div class="card-body">
-                <form action="registorneo.php" method="POST">
-                    <div class="form-group">
-                        <label for="id_registro_torneo_fk">Torneo</label>
-
-                        <select class="form-control" id="id_registro_torneo_fk" name="id_registro_torneo_fk" required>
-                            <?php
-                            $result = $conn->query("SELECT ID_REGISTRO_TORNEO_PK, NOMBRE_TORNEO FROM registro_torneo_cat");
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value='" . htmlspecialchars($row['ID_REGISTRO_TORNEO_PK']) . "'>" . htmlspecialchars($row['NOMBRE_TORNEO']) . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div id="staff-container">
-                        <div class="form-group">
-                            <label for="id_staff_fk">Staff</label>
-                            <select class="form-control" id="id_staff_fk" name="id_staff_fk[]" required>
-                                <?php
-                                $result = $conn->query("SELECT ID_STAFF_PK, NOMBRE, APELLIDO_PATERNO FROM staff_tab");
-                                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<option value='" . htmlspecialchars($row['ID_STAFF_PK']) . "'>" . htmlspecialchars($row['NOMBRE']) . ' ' . htmlspecialchars($row['APELLIDO_PATERNO']) . "</option>";
-                                }
-                                ?>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button" id="add-staff-btn" class="btn btn-secondary mt-2">+</button>
-
-                    <div class="form-group">
-                        <label for="id_organizador_fk">Organizador</label>
-                        <select class="form-control" id="id_organizador_fk" name="id_organizador_fk" required>
-                            <?php
-                            $result = $conn->query("SELECT ID_ORGANIZADOR_PK, NOMBRE, APELLIDO_PATERNO FROM organizadores_tab");
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<option value='" . htmlspecialchars($row['ID_ORGANIZADOR_PK']) . "'>" . htmlspecialchars($row['NOMBRE']) . ' ' . htmlspecialchars($row['APELLIDO_PATERNO']) . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-3">Registrar</button>
-                </form>
-            </div>
-        </div>
-
-        <div class="card">
-            <h5 class="card-header">Staff del Torneo Registrado</h5>
-            <div class="card-body">
+        <div class="form-group">
+            <label for="competidor">Competidor:</label>
+            <select name="competidor" id="competidor" class="form-control">
                 <?php
-                $sql_staff = "SELECT registro_torneo_cat.NOMBRE_TORNEO, staff_tab.NOMBRE AS NOMBRE_STAFF, staff_tab.APELLIDO_PATERNO AS APELLIDO_STAFF, organizadores_tab.NOMBRE AS NOMBRE_ORG, organizadores_tab.APELLIDO_PATERNO AS APELLIDO_ORG
-                              FROM staff_torneo
-                              INNER JOIN registro_torneo_cat ON staff_torneo.id_registro_torneo_fk = registro_torneo_cat.ID_REGISTRO_TORNEO_PK
-                              INNER JOIN staff_tab ON staff_torneo.id_staff_fk = staff_tab.ID_STAFF_PK
-                              INNER JOIN organizadores_tab ON staff_torneo.id_organizador_fk = organizadores_tab.ID_ORGANIZADOR_PK";
-                $result_staff = $conn->query($sql_staff);
-
-                if ($result_staff->rowCount() > 0) {
-                    echo '<table class="table table-striped">';
-                    echo '<thead><tr><th>Nombre del Torneo</th><th>Nombre del Staff</th><th>Apellido del Staff</th><th>Nombre del Organizador</th><th>Apellido del Organizador</th></tr></thead>';
-                    echo '<tbody>';
-                    while ($row = $result_staff->fetch()) {
-                        echo '<tr>';
-                        echo '<td>' . htmlspecialchars($row["NOMBRE_TORNEO"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["NOMBRE_STAFF"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["APELLIDO_STAFF"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["NOMBRE_ORG"]) . '</td>';
-                        echo '<td>' . htmlspecialchars($row["APELLIDO_ORG"]) . '</td>';
-                        echo '</tr>';
+                if ($result_competidores->rowCount() > 0) {
+                    while ($row = $result_competidores->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='" . htmlspecialchars($row['ID_COMPETIDOR_PK']) . "'>" . htmlspecialchars($row['NOMBRE_COMPETIDOR']) . " " . htmlspecialchars($row['APELLIDO_COMPETIDOR']) . "</option>";
                     }
-                    echo '</tbody>';
-                    echo '</table>';
                 } else {
-                    echo "No hay staff registrado.";
+                    echo "<option value=''>No hay competidores disponibles</option>";
                 }
                 ?>
-            </div>
+            </select>
         </div>
-    </div>
-    <script>
-        document.getElementById('add-staff-btn').addEventListener('click', function () {
-            var container = document.getElementById('staff-container');
-            var div = document.createElement('div');
-            div.classList.add('form-group', 'mt-2');
-            div.innerHTML = `
-                <label for="id_staff_fk">Staff</label>
-                <select class="form-control" name="id_staff_fk[]" required>
-                    <?php
-                    $result = $conn->query("SELECT ID_STAFF_PK, NOMBRE, APELLIDO_PATERNO FROM staff_tab");
-                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<option value='" . htmlspecialchars($row['ID_STAFF_PK']) . "'>" . htmlspecialchars($row['NOMBRE']) . ' ' . htmlspecialchars($row['APELLIDO_PATERNO']) . "</option>";
+        <div class="form-group">
+            <label for="nivel">Nivel:</label>
+            <select name="nivel" id="nivel" class="form-control">
+                <?php
+                if ($result_niveles->rowCount() > 0) {
+                    while ($row = $result_niveles->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='" . htmlspecialchars($row['ID_CATEGORIA_NIVEL_PK']) . "'>" . htmlspecialchars($row['NOMBRE_NIVEL']) . "</option>";
                     }
-                    ?>
-                </select>`;
-            container.appendChild(div);
-        });
-    </script>
+                } else {
+                    echo "<option value=''>No hay niveles disponibles</option>";
+                }
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="peso">Peso:</label>
+            <select name="peso" id="peso" class="form-control">
+                <?php
+                if ($result_pesos->rowCount() > 0) {
+                    while ($row = $result_pesos->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='" . htmlspecialchars($row['ID_CATEGORIA_PESO_PK']) . "'>" . htmlspecialchars($row['NOMBRE_CATEGORIA_PESO']) . "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay categorías de peso disponibles</option>";
+                }
+                ?>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+            <select name="edad" id="edad" class="form-control">
+                <?php
+                if ($result_edades->rowCount() > 0) {
+                    while ($row = $result_edades->fetch(PDO::FETCH_ASSOC)) {
+                        echo "<option value='" . htmlspecialchars($row['ID_CATEGORIA_EDAD_PK']) . "'>" . htmlspecialchars($row['NOMBRE_CATEGORIA_EDAD']) . "</option>";
+                    }
+                } else {
+                    echo "<option value=''>No hay categorías de edad disponibles</option>";
+                }
+                ?>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+    </form>
+</div>
 </body>
-
 </html>
