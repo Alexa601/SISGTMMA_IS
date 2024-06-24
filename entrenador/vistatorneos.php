@@ -36,7 +36,7 @@ if (isset($_GET['error'])) {
 
     <nav class="navbar navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="../organizador/homeOrganizador.php"><img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
+    <a class="navbar-brand" href="../entrenador/homeEntrenador.php"><img src="../resourses/img/logo_sisgtmma.png" alt="logo" >
       <strong>Torneos - Sistema de Gestión de Torneos de MMA</strong></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -50,6 +50,9 @@ if (isset($_GET['error'])) {
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../entrenador/homeEntrenador.php">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../entrenador/homeEntrenador.php">Volver</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../model/cerrarSesion.php">Cerrar Sesion</a>
@@ -75,7 +78,7 @@ if (isset($_GET['error'])) {
             <li>Peso</li>
           </ul>
     </p>
-    <a href="#" class="btn">Inscribir alumnos</a>
+    <a href="../entrenador/torneos.php" class="btn">Inscribir alumnos</a>
   </div>
 </div>
 
@@ -83,7 +86,7 @@ if (isset($_GET['error'])) {
   <h5 class="card-header">Ver alumnos inscritos</h5>
   <div class="card-body">
     <p class="card-text">Obtener un reporte de los alumnos inscritos al correo correspondiente</p>
-    <a href="#" class="btn">Ver alumnos inscritos</a>
+    <a href="../entrenador/homeCompetidores.php" class="btn">Ver alumnos inscritos</a>
   </div>
 </div>
 
